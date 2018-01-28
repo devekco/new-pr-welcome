@@ -10,7 +10,7 @@ module.exports = robot => {
         const countPR = response.data.filter(data => data.pull_request);
         if (countPR.length === 1) {
             try {
-                const config = await robot.config.get(context, defaultConfig);
+                const config = await robot.config.get(context);
                 
                 if (config.newPRWelcomeComment) {
                     context.github.issues.createComment(context.issue({body: config.newPRWelcomeComment}));
